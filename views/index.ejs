@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" , content="width=device-width, initial-scale=1.0" />
+    <title>My Brawl Stars!</title>
+    <!--import custom fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
+      rel="stylesheet"
+    />
+    <!--import CSS-->
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div>
+      <h1>My Brawl Stars!</h1>
+      <form action="/" , method="post">
+        <input type="text" name="tag" />
+        <input type="submit" />
+      </form>
+      <% if (locals.player) {%>
+      <h2 id="player-name"><%= player.name%></h2>
+      <h2 class="trophies">Current Trophies: <%= player.trophies%></h2>
+      <h2 class="trophies">Highest Trophies: <%=player.highestTrophies%></h2>
+      <% } else if (locals.invalid) {%>
+      <h2><%= invalid%></h2>
+      <% } else {%>
+      <h2>Enter a player tag!</h2>
+      <%}%>
+    </div>
+    <!--import client-side JS packages-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--import my JS-->
+    <% if (locals.player) {%>
+    <script>
+      const nameColor = "<%= player.nameColor%>";
+      $("#player-name").css(
+        "color",
+        "#" + nameColor.slice(4, nameColor.length)
+      );
+    </script>
+    <%}%>
+    <script src="scripts/index.js" charset="utf-8"></script>
+  </body>
+</html>
