@@ -4,17 +4,20 @@ function playerAnimation() {
     $("#player-name").show();
   }, 400);
   setTimeout(() => {
-    $("#current-trophies").show();
+    $("#club-name").show();
   }, 800);
   setTimeout(() => {
-    $("#highest-trophies").show();
+    $("#current-trophies").show();
   }, 1200);
   setTimeout(() => {
-    $("#peak").show();
+    $("#highest-trophies").show();
   }, 1600);
   setTimeout(() => {
-    $("img").show();
+    $("#peak").show();
   }, 2000);
+  setTimeout(() => {
+    $("#peak-img").show();
+  }, 2400);
 }
 
 // script

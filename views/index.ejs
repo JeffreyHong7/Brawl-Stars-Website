@@ -17,39 +17,91 @@
   <body>
     <div>
       <h1>My Brawl Stars!</h1>
-      <form action="/" , method="post">
-        <input type="text" name="tag" />
-        <input type="submit" />
-      </form>
-      <% if (locals.player) {%>
-      <h2 id="player-name"><%= player.name%></h2>
-      <h2 id="current-trophies">Current Trophies: <%= player.trophies%></h2>
-      <h2 id="highest-trophies">
-        Highest Trophies: <%=player.highestTrophies%>
-      </h2>
-      <% const brawlerList = player.brawlers; let topBrawler = brawlerList[0];
-      brawlerList.forEach((brawler) => { if (brawler.highestTrophies >
-      topBrawler.highestTrophies) { topBrawler = brawler; } }) %>
-      <h2 id="peak">Peak Brawler:</h2>
-      <img src="<%=`brawlers/${topBrawler.name}.gif` %>" alt="top brawler" />
-      <%} else if (locals.invalid) {%>
-      <h2><%= invalid%></h2>
-      <% } else {%>
-      <h2>Enter a player tag!</h2>
-      <%}%>
+      <section id="player-info">
+        <form action="/" , method="post" id="tag-form">
+          <input type="text" name="tag" />
+          <input type="submit" />
+        </form>
+        <% if (locals.player) {%>
+        <h2 id="player-name"><%= player.name%></h2>
+        <h2 id="club-name">Club: <%= player.club.name%></h2>
+        <h2 id="current-trophies">Current Trophies: <%= player.trophies%></h2>
+        <h2 id="highest-trophies">
+          Highest Trophies: <%=player.highestTrophies%>
+        </h2>
+        <% const brawlerList = player.brawlers; let topBrawler = brawlerList[0];
+        brawlerList.forEach((brawler) => { if (brawler.highestTrophies >
+        topBrawler.highestTrophies) { topBrawler = brawler; } }) %>
+        <h2 id="peak">
+          Peak Brawler: <%= topBrawler.name[0] + topBrawler.name.slice(1,
+          topBrawler.name.length).toLowerCase()%>
+        </h2>
+        <img
+          src="<%=`brawlers/${topBrawler.name}.gif` %>"
+          alt="top brawler"
+          id="peak-img"
+        />
+        <%} else if (locals.invalid) {%>
+        <h2><%= invalid%></h2>
+        <% } else {%>
+        <h2>Enter a player tag!</h2>
+        <%}%>
+      </section>
+      <section>
+        <form>
+          <input type="radio" id="brawlBall" name="event" />
+          <label for="brawlBall">Brawl Ball Map</label>
+          <input type="radio" id="showdown" name="event" />
+          <label for="showdown">Showdown Map</label>
+          <input type="radio" id="knockout" name="event" />
+          <label for="knockout">Knockout Map</label>
+        </form>
+        <img
+          src="assets/brawlBall.png"
+          alt="brawl ball icon"
+          id="brawlBall-icon"
+        />
+        <img src="assets/showdown.png" alt="showdown icon" id="showdown-icon" />
+        <img src="assets/knockout.png" alt="knockout icon" id="knockout-icon" />
+        <p id="map"></p>
+      </section>
     </div>
     <!--import client-side JS packages-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!--import my JS-->
+    <!--match displayed name color to be their name color in game-->
     <% if (locals.player) {%>
-    <script>
+    <script charset="utf-8">
       const nameColor = "<%= player.nameColor%>";
-      $("#player-name, #peak").css(
+      $("#player-name").css(
         "color",
         "#" + nameColor.slice(4, nameColor.length)
       );
     </script>
     <%}%>
+    <!--when radio input is clicked, display corresponding event-->
+    <script charset="utf-8">
+      $("#brawlBall, #showdown, #knockout").on("click", function () {
+        if (this.id === "brawlBall") {
+          $("#brawlBall-icon").show();
+          $("#showdown-icon").hide();
+          $("#knockout-icon").hide();
+          $("#map").show().text("<%= events[0].event.map%>");
+        } else if (this.id === "showdown") {
+          const map = "<%= events[1].event.map%>";
+          $("#showdown-icon").show();
+          $("#brawlBall-icon").hide();
+          $("#knockout-icon").hide();
+          $("#map").show().text("<%= events[1].event.map%>");
+        } else {
+          const map = "<%= events[2].event.map%>";
+          $("#knockout-icon").show();
+          $("#brawlBall-icon").hide();
+          $("#showdown-icon").hide();
+          $("#map").show().text("<%= events[2].event.map%>");
+        }
+      });
+    </script>
+    <!--import additional JS-->
     <script src="scripts/index.js" charset="utf-8"></script>
   </body>
 </html>

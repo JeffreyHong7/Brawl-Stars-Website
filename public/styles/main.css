@@ -1,42 +1,86 @@
+/* background styling */
 body {
   background-image: url("../assets/background.jpg");
 }
 
 div,
-form {
+#tag-form,
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* text styling */
 h1,
 h2,
-form > input {
+form > input,
+form > label,
+p {
   text-align: center;
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
+label,
+p {
+  font-size: 19px;
+}
+
 h1,
-h2 {
+h2,
+label,
+p {
   color: white;
 }
 
+/* style the player tag form */
+#player-info {
+  height: 65vh;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* style the displayed player elements */
 #player-name,
+#club-name,
 #current-trophies,
 #highest-trophies,
 #peak {
   display: none;
 }
 
+#club-name,
 #current-trophies,
-#highest-trophies {
+#highest-trophies,
+#peak {
   color: yellow;
 }
 
 img {
   display: none;
+}
+
+#peak-img {
   height: 200px;
   width: 200px;
+}
+
+/* style the event elements */
+#brawlBall-icon,
+#showdown-icon,
+#knockout-icon {
+  height: 100px;
+  width: 100px;
+}
+
+#map {
+  display: none;
 }
