@@ -19,4 +19,5 @@ Steps to Access Website:
 6. Assuming NodeJS is installed on your device, run node --watch index.js
 7. On your web browser, enter the following: localhost:3000
 
-Why Make a Token? In essence, by following these steps, you're computer is hosting a local copy of this website. This local copy interacts with the Brawl Stars API; however, in order to retrieve data from the API, one needs to be authorized to do so. Creating the token (the initial sequence of steps) allows one to be properly authorized to retrieve data from the Brawl Stars API. Since the okens are specific to IP addresses, using my token that I used to develop the website would not work for you; hence why you needed to create a token of your own.
+What's Happening Exactly?:
+In essence, by following these steps, you're computer is hosting a local copy of this website. This local copy interacts with the Brawl Stars API; however, in order to retrieve data from the API, one needs to be authorized to do so. Creating the token (the initial sequence of steps) allows one to be properly authorized to retrieve data from the Brawl Stars API. Since the okens are specific to IP addresses, using my token that I used to develop the website would not work for you; hence why you needed to create a token of your own.
