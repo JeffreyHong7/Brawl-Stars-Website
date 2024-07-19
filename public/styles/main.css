@@ -23,6 +23,20 @@ h2 {
   color: white;
 }
 
-.trophies {
+#player-name,
+#current-trophies,
+#highest-trophies,
+#peak {
+  display: none;
+}
+
+#current-trophies,
+#highest-trophies {
   color: yellow;
+}
+
+img {
+  display: none;
+  height: 200px;
+  width: 200px;
 }

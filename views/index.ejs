@@ -23,9 +23,16 @@
       </form>
       <% if (locals.player) {%>
       <h2 id="player-name"><%= player.name%></h2>
-      <h2 class="trophies">Current Trophies: <%= player.trophies%></h2>
-      <h2 class="trophies">Highest Trophies: <%=player.highestTrophies%></h2>
-      <% } else if (locals.invalid) {%>
+      <h2 id="current-trophies">Current Trophies: <%= player.trophies%></h2>
+      <h2 id="highest-trophies">
+        Highest Trophies: <%=player.highestTrophies%>
+      </h2>
+      <% const brawlerList = player.brawlers; let topBrawler = brawlerList[0];
+      brawlerList.forEach((brawler) => { if (brawler.highestTrophies >
+      topBrawler.highestTrophies) { topBrawler = brawler; } }) %>
+      <h2 id="peak">Peak Brawler:</h2>
+      <img src="<%=`brawlers/${topBrawler.name}.gif` %>" alt="top brawler" />
+      <%} else if (locals.invalid) {%>
       <h2><%= invalid%></h2>
       <% } else {%>
       <h2>Enter a player tag!</h2>
@@ -37,7 +44,7 @@
     <% if (locals.player) {%>
     <script>
       const nameColor = "<%= player.nameColor%>";
-      $("#player-name").css(
+      $("#player-name, #peak").css(
         "color",
         "#" + nameColor.slice(4, nameColor.length)
       );

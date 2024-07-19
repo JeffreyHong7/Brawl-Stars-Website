@@ -27,7 +27,7 @@ app.post("/", async (req, res) => {
     if (tag[0] === "#") {
       tag = tag.slice(1, tag.length);
     }
-    const response = await axios.get(apiURL + "players/%23" + tag, config);
+    const response = await axios.get(`${apiURL}players/%23${tag}`, config);
     const player = response.data;
     res.render("index.ejs", { player });
   } catch (error) {
@@ -35,8 +35,14 @@ app.post("/", async (req, res) => {
       res.render("index.ejs", {
         invalid: "No player with this tag! Please re-enter a valid tag.",
       });
+    } else {
+      res.render("index.ejs", {
+        invalid: `Error ${error.response.status}`,
+      });
     }
-    console.error(error.response.data);
+    console.error(
+      `Error: ${error.response.data.reason}, Status: ${error.response.status}`
+    );
   }
 });
 // start server
