@@ -35,17 +35,20 @@ p {
   color: white;
 }
 
+h1 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
 /* style the player tag form */
 #player-info {
   height: 65vh;
 }
 
+h2,
 input {
-  margin-bottom: 20px;
-}
-
-h2 {
   margin-top: 0;
+  margin-bottom: 20px;
 }
 
 /* style the displayed player elements */
@@ -83,4 +86,6 @@ img {
 
 #map {
   display: none;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
