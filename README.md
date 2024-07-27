@@ -16,7 +16,7 @@ Steps to Access Website:
 3. Run "cd <name>" to enter the cloned repository
 4. Run "npm i" (and "npm audit fix")
 5. Within the index.js folder (NOT the index.js in public/scripts), at the top under the initialize variables section, copy and paste your acquired Brawl Stars token within the variable assignment: const token = "YOUR TOKEN HERE" (do not forget the " " around your token)
-6. Assuming NodeJS is installed on your device, run node --watch index.js
+6. Run "node --watch index.js"
 7. On your web browser, enter the following: localhost:3000
 
 What's Happening Exactly?:
